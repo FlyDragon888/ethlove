@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smallT.userSelfService.dao.RegisterDao">
+	<resultMap type="com.smallT.userSelfService.entity.User" id="resultMap">
+		<result column="userId" property="userId" />
+		<result column="userName" property="regisName"/>
+		<result column="password" property="password" />
+		<result column="registerTime" property="registerDate" />
+	</resultMap>
+	<insert id="register" parameterType="com.smallT.userSelfService.entity.User">
+		insert into User(userName,userPassword,registerTime) values (#{regisName},#{password},#{registerDate})
+	</insert>
+</mapper>  

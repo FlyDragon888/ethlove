@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smallT.articleManage.dao.ArticleManageDao">
+	<insert id="insertArticle" parameterType="com.smallT.articleManage.entity.Article">
+		 insert into ARTICLE(title,digest,author,from,content,picture,type,isShow,upTime,viewCount,praise) values (#{title},#{digest},#{author},#{from},#{content},#{picture},#{type},#{isShow},#{upTime},#{viewCount},#{praise})
+	</insert>
+	<select id="selectArticle" resultType="com.smallT.articleManage.entity.Article">
+		select id,title from ARTICLE  order by upTime desc
+	</select>
+	
+</mapper>  
