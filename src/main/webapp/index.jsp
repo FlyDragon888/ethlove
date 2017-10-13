@@ -10,37 +10,63 @@
 <style type="text/css">
 #main {
 	background: url("pic/bg/bg.jpg");
-	height: 431px;
+	height: 700px;
 	width: 1920;
+}
+#index-bottom{
+	height: 200px;
+	width: 1920;
+	background: url("pic/bg/bg-bottom.jpg");
 }
 </style>
 
 </head>
 <body>
-	<div>
-		<ul class="layui-nav layui-bg-blue">
-			<li class="layui-nav-item"><a href=""
-				style="padding-left: 0px; padding-right: 0px;"><img
-					src="pic/bg/logo.png" /></a></li>
-			<li class="layui-nav-item"><a href="">产品</a></li>
-			<li class="layui-nav-item"><a href="">大数据</a></li>
-			<!--  <li class="layui-nav-item">
-		    <a href="javascript:;">解决方案</a>
-		    <dl class="layui-nav-child">
-		      <dd><a href="">移动模块</a></dd>
-		      <dd><a href="">后台模版</a></dd>
-		      <dd><a href="">电商平台</a></dd>
-		    </dl>
-		  </li> -->
-			<li class="layui-nav-item"><a href="">社 区</a></li>
-			<li class="layui-nav-item"><div style="width: 850px"></div></li>
-			<li class="layui-nav-item"><a href="">登 录</a></li>
-			<li class="layui-nav-item"><a href="">注 册</a></li>
-		</ul>
+	<div id="main">
+			<div>
+			<ul class="layui-nav" style="background: none">
+				<li class="layui-nav-item"><a href=""
+					style="padding-left: 0px; padding-right: 0px;"><img
+						src="pic/bg/logo.png" /></a></li>
+				<li class="layui-nav-item"><a href="">产品</a></li>
+				<li class="layui-nav-item"><a href="">大数据</a></li>
+				<!--  <li class="layui-nav-item">
+			    <a href="javascript:;">解决方案</a>
+			    <dl class="layui-nav-child">
+			      <dd><a href="">移动模块</a></dd>
+			      <dd><a href="">后台模版</a></dd>
+			      <dd><a href="">电商平台</a></dd>
+			    </dl>
+			  </li> -->
+				<li class="layui-nav-item"><a href="">社 区</a></li>
+				<li class="layui-nav-item"><div style="width: 850px"></div></li>
+				<li class="layui-nav-item"><a href="">登 录</a></li>
+				<li class="layui-nav-item"><a href="">注 册</a></li>
+			</ul>
+		</div>
+		
+		
 	</div>
-	<div id="main">goods</div>
-	111111
-
+	
+	<div id="index-bottom">
+		<div class="layui-container" style="padding-top: 30px;">  
+		  <div class="layui-row">
+		    <div class="layui-col-md9" style="height:60px;font-size:x-large;">
+		      最 近 的 一 次 交 易 ： ￥  36000
+		    </div>
+		    <div class="layui-col-md3" style="height:60px;font-size:x-large;text-align:center; ">
+		 <a href=""> 进入广场</a>
+		    </div>
+		  </div>
+		 </div>
+		
+		<div>
+			<div class="" style="text-align:center;padding-top: 80px;height:36px;">
+	                <span>Copyright © <a href="http://expo.bootcss.com" >优站精选</a></span> |
+	                <span><a href="http://www.miibeian.gov.cn/" target="_blank" >京ICP备xsxxxxx号</a></span>
+	         </div>
+		</div>
+	</div>
 
 	<script type="text/javascript" src="layui/layui.js"></script>
 	<script>
