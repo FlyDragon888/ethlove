@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="layui/css/layui.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/layui/css/layui.css" rel="stylesheet" type="text/css" />
 
 <style type="text/css">
 #main {
@@ -40,8 +40,8 @@
 			  </li> -->
 				<li class="layui-nav-item"><a href="">社 区</a></li>
 				<li class="layui-nav-item"><div style="width: 850px"></div></li>
-				<li class="layui-nav-item"><a href="">登 录</a></li>
-				<li class="layui-nav-item"><a href="<%=request.getContextPath()%>/userSelfService/userRegister.jsp">注 册</a></li>
+				<li class="layui-nav-item"><a href= "javascript:void(0);" onclick ="goToLogin()">登 录</a></li>
+				<li class="layui-nav-item"><a href ="javascript:void(0);" onclick ="goToRegister()">注 册</a></li>
 			</ul>
 		</div>
 		
@@ -68,11 +68,20 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="layui/layui.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/layui/layui.js"></script>
 	<script>
 		layui.use([ 'element', 'form' ], function() {
 			var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 		});
+		
+		function goToRegister() {
+			window.location.href = "<%=request.getContextPath()%>/userSelfService/userRegister.jsp";
+		}
+
+		function goToLogin() {
+			window.location.href = "<%=request.getContextPath()%>/userSelfService/userLogin.jsp";
+		}
+		
 	</script>
 </body>
 </html>

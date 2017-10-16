@@ -21,7 +21,7 @@
 <body >
 	<div>
 		<ul class="layui-nav">
-			<li class="layui-nav-item layui-icon"><a href="">&#xe68e;首 页</a></li>
+			<li class="layui-nav-item layui-icon"><a href="javascript:void(0);" onclick ="goToHomePage()">&#xe68e;首 页</a></li>
 			<li class="layui-nav-item"><div style="width:1160px;"></div></li>
 			<!-- <li class="layui-nav-item layui-this">
 		    <a href="javascript:;">随便逛逛</a>
@@ -41,13 +41,13 @@
 		      <dd><a href="">电商平台</a></dd>
 		    </dl>
 		  </li> -->
-			<li class="layui-nav-item"><a href="">登 录</a></li>
+			<li class="layui-nav-item"><a href=javascript:void(0);" onclick ="goToLogin()">登 录</a></li>
 		</ul>
 	</div>
 
 
 	<div id="main" style="margin-top: 50px;">
-		<form class="layui-form" action="" style="">
+		<form class="layui-form" action="<%=request.getContextPath()%>/userSelfService/register.do" method="post">
 
 			<div class="layui-form-item" >
 				<label class="layui-form-label">用 户 名</label>
@@ -99,8 +99,9 @@
 
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn" lay-submit lay-filter="" onclick="register()">注    册</button>
+					<button type="submit" class="layui-btn" lay-submit lay-filter="">注    册</button>
 					<button type="reset" class="layui-btn layui-btn-primary">重    置</button>
+					
 				</div>
 			</div>
 		</form>
@@ -108,6 +109,8 @@
 
 
 	<script type="text/javascript" src="<%=request.getContextPath()%>/layui/layui.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-2.1.1.min.js"></script>
+	
 	<script>
 		layui.use(['element','form'], function(){
 		  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
@@ -115,7 +118,7 @@
 		  
 		  form.on('submit(register)', function(data){
 				console.log(data.field);
-				var ctx = ${pageContext.request.contextPath};
+				//var ctx = ${pageContext.request.contextPath};
 				$.ajax({
 					url : ctx+"/userSelfService/register.do",
 					type : 'POST',
@@ -148,9 +151,9 @@
 			var password = $("#password");
 			var email = $("email");
 			
-			var ctx = ${pageContext.request.contextPath};
+			//var ctx = ${pageContext.request.contextPath};
 			$.ajax({
-				url : ctx+"/userSelfService/register.do",
+				url : "ethlove/userSelfService/register.do",
 				type : 'POST',
 				dataType : 'json',
 				async : false,
@@ -174,6 +177,13 @@
 		});
 		}	
 		
+		function goToHomePage() {
+			window.location.href = "<%=request.getContextPath()%>/index.jsp";
+		}
+
+		function goToLogin() {
+			window.location.href = "<%=request.getContextPath()%>/userSelfService/userLogin.jsp";
+		}
 		
 		
 	</script>
