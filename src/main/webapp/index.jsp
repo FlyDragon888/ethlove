@@ -41,7 +41,7 @@
 				<li class="layui-nav-item"><a href="">社 区</a></li>
 				<li class="layui-nav-item"><div style="width: 850px"></div></li>
 				<li class="layui-nav-item"><a href="">登 录</a></li>
-				<li class="layui-nav-item"><a href="">注 册</a></li>
+				<li class="layui-nav-item"><a href="<%=request.getContextPath()%>/userSelfService/userRegister.jsp">注 册</a></li>
 			</ul>
 		</div>
 		

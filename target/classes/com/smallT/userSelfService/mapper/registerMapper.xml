@@ -4,11 +4,19 @@
 <mapper namespace="com.smallT.userSelfService.dao.RegisterDao">
 	<resultMap type="com.smallT.userSelfService.entity.User" id="resultMap">
 		<result column="userId" property="userId" />
-		<result column="userName" property="regisName"/>
+		<result column="userName" property="userName"/>
 		<result column="password" property="password" />
-		<result column="registerTime" property="registerDate" />
+		<result column="email" property="email" />
+		<result column="phone" property="phone" />
+		<result column="isActivte" property="isActivte" />
+		<result column="vipLevel" property="vipLevel" />
+		<result column="lastLoginDate" property="lastLoginDate" />
+		<result column="lastLoginIp" property="lastLoginIp" />
+		<result column="registerDate" property="registerDate" />
+		
 	</resultMap>
 	<insert id="register" parameterType="com.smallT.userSelfService.entity.User">
-		insert into User(userName,userPassword,registerTime) values (#{regisName},#{password},#{registerDate})
+		insert into User(userName,email,phone,isActivte,vipLevel,password,registerDate,lastLoginDate,lastLoginIp) 
+		values (#{userName},#{email},#{phone},#{isActivte},#{vipLevel},#{password},#{registerDate},#{lastLoginDate},#{lastLoginIp})
 	</insert>
 </mapper>  

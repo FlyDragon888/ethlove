@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="layui/css/layui.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/layui/css/layui.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 	#main{
 		margin:0 auto;
@@ -49,7 +52,7 @@
 			<div class="layui-form-item" >
 				<label class="layui-form-label">用 户 名</label>
 				<div class="layui-input-inline">
-					<input type="text" name="username" lay-verify="required"
+					<input id="userName" type="text" name="userName" lay-verify="required"
 						placeholder="请输入" autocomplete="off" class="layui-input">
 				</div>
 			</div>
@@ -69,7 +72,7 @@
 				<div class="layui-inline">
 					<label class="layui-form-label">邮   箱</label>
 					<div class="layui-input-inline">
-						<input type="text" name="email" lay-verify="email"
+						<input id="email" type="text" name="email" lay-verify="email"
 							placeholder="请输入邮箱" autocomplete="off" class="layui-input">
 					</div>
 				</div>
@@ -77,7 +80,7 @@
 			</div>
 
 			<div class="layui-form-item">
-				<label class="layui-form-label">密    码</label>
+				<label id="password" class="layui-form-label">密    码</label>
 				<div class="layui-input-inline">
 					<input type="password" name="password" lay-verify="pass"
 						placeholder="请输入密码" autocomplete="off" class="layui-input">
@@ -86,7 +89,7 @@
 			</div>
 			
 			<div class="layui-form-item">
-				<label class="layui-form-label">再次输入</label>
+				<label id="password2" class="layui-form-label">再次输入</label>
 				<div class="layui-input-inline">
 					<input type="password" name="password" lay-verify="pass"
 						placeholder="请输入密码" autocomplete="off" class="layui-input">
@@ -96,7 +99,7 @@
 
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn" lay-submit lay-filter="register">注    册</button>
+					<button class="layui-btn" lay-submit lay-filter="" onclick="register()">注    册</button>
 					<button type="reset" class="layui-btn layui-btn-primary">重    置</button>
 				</div>
 			</div>
@@ -104,18 +107,33 @@
 	</div>
 
 
-	<script type="text/javascript" src="layui/layui.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/layui/layui.js"></script>
 	<script>
 		layui.use(['element','form'], function(){
 		  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 		  var form = layui.form;
 		  
 		  form.on('submit(register)', function(data){
-			 /*  console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
-			  console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
-			  console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value} */
-			  //return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-			  
+				console.log(data.field);
+				var ctx = ${pageContext.request.contextPath};
+				$.ajax({
+					url : ctx+"/userSelfService/register.do",
+					type : 'POST',
+					dataType : 'json',
+					async : false,
+					data : data.field,
+					success : function(res) {
+						if(res.isSuss){
+							window.location.href=ctx+"/index.jsp"; 
+						}else{
+							alert(res.message);
+						}
+						
+					},
+					error : function(msg) {
+						alert(error);
+					}
+				});
 			});
 		  
 		  //监听导航点击
@@ -124,6 +142,40 @@
 		    layer.msg(elem.text());
 		  }); */
 		});
+		
+		function register(){
+			var userName = $("#userName");
+			var password = $("#password");
+			var email = $("email");
+			
+			var ctx = ${pageContext.request.contextPath};
+			$.ajax({
+				url : ctx+"/userSelfService/register.do",
+				type : 'POST',
+				dataType : 'json',
+				async : false,
+				data : {
+					userName:userName,
+					password:password,
+					email: email
+				
+				},
+				success : function(res) {
+					if(res.isSuss){
+						window.location.href=ctx+"/index.jsp"; 
+					}else{
+						alert(res.message);
+					}
+					
+				},
+				error : function(msg) {
+					alert(error);
+				}
+		});
+		}	
+		
+		
+		
 	</script>
 
 </body>
