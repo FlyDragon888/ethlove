@@ -12,7 +12,7 @@
 		<spring.security.version>3.2.9.RELEASE</spring.security.version>
 		<jackson2.version>2.1.0</jackson2.version>
 		<joda.version>2.1</joda.version>
-		<!-- <cxf.version>2.7.5</cxf.version> -->
+		<cxf.version>2.7.5</cxf.version> 
 		<guava.version>14.0</guava.version>
 	</properties>
 	
@@ -327,11 +327,60 @@
 			<artifactId>jackson-jaxrs-json-provider</artifactId>
 			<version>${jackson2.version}</version>
 		</dependency>
-		<!-- <dependency>
+		
+		<!-- webService:CXF Dependencies -->
+		<dependency> 
+		         <groupId>org.apache.cxf</groupId> 
+		         <artifactId>cxf-rt-frontend-jaxws</artifactId> 
+		         <version>${cxf.version}</version> 
+		</dependency> 
+		<dependency> 
+		         <groupId>org.apache.cxf</groupId> 
+		         <artifactId>cxf-rt-transports-http</artifactId> 
+		         <version>${cxf.version}</version> 
+		</dependency> 
+		<dependency> 
+		         <groupId>org.apache.cxf</groupId> 
+		         <artifactId>cxf-rt-transports-http-jetty</artifactId> 
+		         <version>${cxf.version}</version> 
+		</dependency> 
+		<dependency> 
+		         <groupId>org.apache.cxf</groupId> 
+		         <artifactId>cxf-rt-ws-security</artifactId> 
+		         <version>${cxf.version}</version> 
+		</dependency> 
+		<dependency> 
+		         <groupId>org.apache.cxf</groupId> 
+		         <artifactId>cxf-rt-ws-policy</artifactId> 
+		         <version>${cxf.version}</version> 
+		</dependency> 
+		<dependency> 
+		         <groupId>org.apache.cxf</groupId> 
+		         <artifactId>cxf-bundle-jaxrs</artifactId> 
+		         <version>${cxf.version}</version> 
+		</dependency> 
+		<dependency>
 			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<artifactId>cxf-api</artifactId>
 			<version>${cxf.version}</version>
-		</dependency> -->
+		</dependency>
+		<dependency> 
+		         <groupId>javax.ws.rs</groupId> 
+		         <artifactId>jsr311-api</artifactId> 
+		         <version>1.1.1</version> 
+		</dependency>
+		<dependency> 
+		        <groupId>commons-httpclient</groupId> 
+		        <artifactId>commons-httpclient</artifactId> 
+		        <version>3.0</version> 
+		</dependency>
+		
+        <dependency>  
+            <groupId>org.apache.cxf</groupId>  
+            <artifactId>cxf-rt-core</artifactId>  
+            <version>${cxf.version}</version>  
+        </dependency>  
+<!-- webService:End of CXF Dependencies -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
