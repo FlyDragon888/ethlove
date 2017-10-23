@@ -4,20 +4,21 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import javax.annotation.Resource;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.smallT.IReserve.entity.THouse;
 import com.smallT.IReserve.entity.THouseDay;
-import com.smallT.IReserve.service.IReserveService;
+import com.smallT.IReserve.service.IreserveService;
+import com.smallT.framework.utils.ServiceHelper;
 
 public class DayHouseUtil {
 	
-	@Resource
-	private static IReserveService iReserveService;
+	private static   IreserveService iReserveService;
 	
 	public static  void addDayHouse(int day){
-		SimpleDateFormat sdf = new SimpleDateFormat();
+		iReserveService = ServiceHelper.getIReserveService();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		//此处获得所有房间信息
 		List<THouse> hList = iReserveService.getAllHouse();
 		for(THouse h:hList ){
@@ -27,23 +28,39 @@ public class DayHouseUtil {
 				cal.setTime(new Date());
 				cal.add(Calendar.DAY_OF_YEAR, +i);
 				String time = sdf.format(cal.getTime());
-				System.out.println(h.getRoomNo() + "---" + time);
 				
 				THouseDay tHouseDay = new THouseDay();
-				tHouseDay.setdRoomNo(h.getRoomNo() + "-" + sdf.format(cal.getTime()));
+				tHouseDay.setdRoomNo(h.getRoomNo() + "-" + time);
 				tHouseDay.sethDate(cal.getTime());
 				tHouseDay.setRoomNo(h.getRoomNo());
-				tHouseDay.setHotelId(h.getHoteld());
+				tHouseDay.setHotelId(h.getHotelId());
 				tHouseDay.setState(0);
-				iReserveService.insertDayInfo(tHouseDay);
+				boolean isExist = iReserveService.isTimeExist(tHouseDay);
+				if(!isExist){
+					iReserveService.insertDayInfo(tHouseDay);
+				}
+				
 				i++;
-				if (i == day) {
+				if (i > day) {
 					break;
 				}
 			}
 		}
 		
 	}
+	public static void startTimmer(){
+		Timer timer = new Timer();
+
+		timer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				addDayHouse(38);
+				
+			}
+		}, 1000, 1000*60*60*24);
+	}
+	
 	public static void main(String[] args) {
 		addDayHouse(38);
 	}

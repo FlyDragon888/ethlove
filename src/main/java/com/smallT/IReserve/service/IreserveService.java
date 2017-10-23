@@ -5,7 +5,8 @@ import java.util.List;
 import com.smallT.IReserve.entity.THouse;
 import com.smallT.IReserve.entity.THouseDay;
 
-public interface IReserveService {
+
+public interface IreserveService {
 	
 	/**
 	 * 定时插入房间每日信息
@@ -18,4 +19,6 @@ public interface IReserveService {
 	 * @return
 	 */
 	public List<THouse>   getAllHouse();
+	
+	public boolean isTimeExist(THouseDay tHouseDay);
 }

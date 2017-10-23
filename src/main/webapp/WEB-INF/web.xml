@@ -10,13 +10,13 @@
 			classpath:applicationContext*.xml
 		</param-value>
   </context-param>
-	<context-param>
+  <context-param>
     <param-name>log4jConfigLocation</param-name>
     <param-value>classpath:log4j.xml</param-value>
-  </context-param> 
-	<listener>   
-	    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>   
-	</listener>  
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -39,15 +39,6 @@
     <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
-  <!-- <filter>
-    <filter-name>sitemesh</filter-name>
-    <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
-  </filter> -->
-<!--   <filter-mapping>
-    <filter-name>sitemesh</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping> -->
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
@@ -76,6 +67,9 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-       <welcome-file>/index.jsp</welcome-file>
+    <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
+  <listener>
+    <listener-class>com.smallT.framework.listener.WebAppContextListener</listener-class>
+  </listener>
 </web-app>

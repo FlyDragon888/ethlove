@@ -7,10 +7,13 @@ import org.springframework.stereotype.Repository;
 import com.smallT.IReserve.entity.THouse;
 import com.smallT.IReserve.entity.THouseDay;
 
+
 @Repository
 public interface IReserveDao {
 	
 	public void insertDayInfo(THouseDay  tHouseDay);
 	
 	public List <THouse> getAllHouse();
+	
+	public int isTimeExit(THouseDay tHouseDay);
 }

@@ -5,7 +5,7 @@ public class THouse {
 	private String htNo;
 	private String desc;
 	private String synState;
-	private String hoteld;
+	private String hotelId;
 	public String getRoomNo() {
 		return roomNo;
 	}
@@ -30,11 +30,12 @@ public class THouse {
 	public void setSynState(String synState) {
 		this.synState = synState;
 	}
-	public String getHoteld() {
-		return hoteld;
+	public String getHotelId() {
+		return hotelId;
 	}
-	public void setHoteld(String hoteld) {
-		this.hoteld = hoteld;
+	public void setHotelId(String hotelId) {
+		this.hotelId = hotelId;
 	}
+	
 	
 }

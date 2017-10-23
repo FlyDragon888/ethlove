@@ -23,4 +23,9 @@
 	<select id="getAllHouse" resultType="com.smallT.IReserve.entity.THouse">
 		select * from thouse 
 	</select> 
+	
+	<select id="isTimeExit" resultType="int">
+		select count(*) from thouseday where droomno=#{dRoomNo}
+	</select> 
+	
 </mapper>  
